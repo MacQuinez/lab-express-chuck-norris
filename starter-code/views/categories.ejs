@@ -1,3 +1,8 @@
-  <body>
-    <h1>Categories</h1>
-  </body>
+<h1>Categories</h1>
+<ul>
+  <% categories.forEach((categorie) => { %>
+    <li>
+      <%= categorie %>
+    </li>
+    <% }) %>
+</ul>

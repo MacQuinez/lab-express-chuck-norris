@@ -10,10 +10,26 @@ app.get('/random', (req, res, next) => {
   client
     .getRandomJoke()
     .then(response => {
-      res.render('index', { response });
+      res.render('index', {
+        joke: response
+      });
     })
     .catch(err => {
       console.log('error');
+    });
+});
+
+app.get('/categories', (req, res, next) => {
+  client
+    .getJokeCategories()
+    .then(response => {
+      res.render('categories', {
+        categories: response
+        //tantos objetos como queramos
+      });
+    })
+    .catch(err => {
+      // handle error
     });
 });
 
