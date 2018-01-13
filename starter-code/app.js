@@ -37,13 +37,12 @@ app.get('/categories', (req, res, next) => {
 app.get('/categories/:cat', (req, res, next) => {
   let cat = req.params.cat;
   client
-    .getRandomJoke('cat')
+    .getRandomJoke(cat)
     .then(response => {
-      res.render('joke-by-category'),
-        {
-          joke: response
-          //tantos objetos como quer
-        };
+      res.render('joke-by-category', {
+        joke: response
+        //tantos objetos como queramos
+      });
     })
     .catch(err => {
       // handle error
