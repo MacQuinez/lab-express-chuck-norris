@@ -33,6 +33,23 @@ app.get('/categories', (req, res, next) => {
     });
 });
 
+// Retrieve a random chuck joke
+app.get('/categories/:cat', (req, res, next) => {
+  let cat = req.params.cat;
+  client
+    .getRandomJoke('cat')
+    .then(response => {
+      res.render('joke-by-category'),
+        {
+          joke: response
+          //tantos objetos como quer
+        };
+    })
+    .catch(err => {
+      // handle error
+    });
+});
+
 app.listen(3000, () => {
   console.log('My first app listening on port 3000!');
 });
